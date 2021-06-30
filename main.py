@@ -96,6 +96,7 @@ def script(i):
 			"""                               INDICAR EN LA VARIABLE directory DONDE SE ENCUENTRAN LOS DATOS QUE LOS PROGRAMAS VAN A UTILIZAR                                   """
 
 			directory = "data/"
+			
 			input_split[0] = lista_split[0]
 		for k in range(len(input_split)):
 			if(k ==0):
@@ -124,10 +125,7 @@ def script(i):
 	print()
 	print("**************************************EJECUTANDO***************************************: " + str(array_sort[i]) + " - " + lista_split[0])
 	print()
-
-	"""                          INDICAR EN os.system CON QUE COMPILIDAR SE VAN A EJECUTAR Y DONDE SE ENCUENTRAN LOS PROGRAMAS QUE SE VAN A UTILIZAR                             """
-
-	os.system("python2 scripts/" +  str(array_sort[i]) + " " + total_input_split_united + total_output_split_united)
+	os.system(directory_scripts +  str(array_sort[i]) + " " + total_input_split_united + total_output_split_united)
 	print()
 	print("**************************************TERMINADO***************************************: " + str(array_sort[i])+ " - " + lista_split[0])
 	print()
@@ -332,8 +330,9 @@ def monitoring(lista_monitores ):
 			bloque = bloque + 1
 			break
 
+"""                          INDICAR EN VARIABLE directory_scripts CON QUE COMPILIDAR SE VAN A EJECUTAR Y DONDE SE ENCUENTRAN LOS PROGRAMAS QUE SE VAN A UTILIZAR                             """
 
-
+directory_scripts = "python2 scripts/"
 fileName = 'data.csv'
 fileObj = Path(fileName)
 
@@ -546,8 +545,10 @@ def execution_list(i, z):
 			directory = ""
 			input_split[1] = aux_lista[z]
 		else:
-			directory = "/home/aherrera/datos/"
-			#directory = "/home/aspide/data/sermas/32/"
+			"""                               INDICAR EN LA VARIABLE directory DONDE SE ENCUENTRAN LOS DATOS QUE LOS PROGRAMAS VAN A UTILIZAR                                   """
+
+			directory = "data/"
+			
 			input_split[0] = aux_lista[z]
 		for k in range(len(input_split)):
 			if(k ==0):
@@ -577,12 +578,7 @@ def execution_list(i, z):
 	print()
 	print("**************************************EJECUTANDO***************************************: " + str(scriptsuff[i]) + " - " + str(aux_lista[z]) )
 	print()
-	
-	"""                          INDICAR EN os.system CON QUE COMPILIDAR SE VAN A EJECUTAR Y DONDE SE ENCUENTRAN LOS PROGRAMAS QUE SE VAN A UTILIZAR                             """
-
-	os.system("python2 scripts/" + str(scriptsuff[i]) + " " + total_input_split_united + total_output_split_united)
-
-
+	os.system(directory_scripts + str(scriptsuff[i]) + " " + total_input_split_united + total_output_split_united)
 	print()
 	print("**************************************TERMINADO***************************************: " + str(scriptsuff[i])+ " - " + str(aux_lista[z]))
 	print()
