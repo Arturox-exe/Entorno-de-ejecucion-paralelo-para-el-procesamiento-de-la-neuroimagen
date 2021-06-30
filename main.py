@@ -3,10 +3,8 @@ import os
 import time
 import threading
 import psutil
-import numpy 
 import pandas as pd
 from pathlib import Path
-import csv
 import math
 
 inicio_de_tiempo_total = time.time()
