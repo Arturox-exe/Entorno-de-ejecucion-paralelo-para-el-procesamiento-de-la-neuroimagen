@@ -1,4 +1,4 @@
-# Entorno-de-ejecucion-paralelo-para-el-procesamiento-de-la-neuroimagen
+# Entorno de ejecución paralelo para el procesamiento de la neuroimagen
 
 Este proyecto es en Proyecto Fin de Grado elaborado en el curso 2020-2021 en la Universidad Carlos III de Madrid. Este programa sirve para la creación de workflows dependiendo de las características del ordenador donde se ejecute, fue testeado para procesamiento de neuroimágenes. Para su ejecución es necesario tener instalado Python 3.
 
