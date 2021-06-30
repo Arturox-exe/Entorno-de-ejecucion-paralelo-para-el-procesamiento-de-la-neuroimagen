@@ -1,0 +1,106 @@
+[
+            {
+                    "name": "Bin Bvals",
+                    "script": "bin_bvals.py",
+                    "input_files": ["{subject_id}/T1w/Diffusion/bvals"],
+                    "output_files": ["temporal/{subject_id}/bin_bvals"],
+                    "nthreads": 1
+            },
+           	{
+    		"name": "DWI Undersample",
+    		"script": "undersample_dwi.py",
+    		"input_files": ["{subject_id}/T1w/Diffusion/data.nii.gz",
+    				"{subject_id}/T1w/Diffusion/bvecs",
+    				"temporal/{subject_id}/bin_bvals"],
+    		"output_files": ["temporal/{subject_id}/un_dwi.nii.gz",
+    				 "temporal/{subject_id}/un_bvecs",
+    				 "temporal/{subject_id}/un_bvals"],
+    		"nthreads": 1
+    	},
+    	{
+    		"name": "MCMicro",
+    		"script": "mcmicro.py",
+    		"input_files": ["temporal/{subject_id}/un_dwi.nii.gz",
+                                    "temporal/{subject_id}/un_bvecs",
+                                    "temporal/{subject_id}/un_bvals",
+                                    "{subject_id}/T1w/Diffusion/nodif_brain_mask.nii.gz"],
+    		"output_files": ["temporal/{subject_id}/mcmicro-b0.nii.gz",
+                                     "temporal/{subject_id}/mcmicro-diff.nii.gz",
+                                     "temporal/{subject_id}/mcmicro-extramd.nii.gz",
+                                     "temporal/{subject_id}/mcmicro-extratrans.nii.gz",
+                                     "temporal/{subject_id}/mcmicro-intra.nii.gz"],
+    		"nthreads": 4
+    	},
+            {
+    		"name": "Response Function",
+    		"script": "response.py",
+    		"input_files": ["temporal/{subject_id}/un_dwi.nii.gz",
+                                    "temporal/{subject_id}/un_bvecs",
+    				"temporal/{subject_id}/un_bvals",
+    				"{subject_id}/T1w/Diffusion/nodif_brain_mask.nii.gz"],
+    		"output_files": ["temporal/{subject_id}/wm_res.txt",
+    				 "temporal/{subject_id}/gm_res.txt",
+    				 "temporal/{subject_id}/csf_res.txt"],
+    		"nthreads": 4
+    	},
+            {
+                "name": "MSMT CSD",
+                "script": "msmt_csd.py",
+                "input_files": ["temporal/{subject_id}/un_dwi.nii.gz",
+                                "temporal/{subject_id}/un_bvecs",
+                                "temporal/{subject_id}/un_bvals",
+                                "{subject_id}/T1w/Diffusion/nodif_brain_mask.nii.gz",
+                                "temporal/{subject_id}/wm_res.txt",
+                                "temporal/{subject_id}/gm_res.txt",
+                                "temporal/{subject_id}/csf_res.txt"],
+                "output_files": ["temporal/{subject_id}/wm_fod.nii.gz",
+                                 "temporal/{subject_id}/gm_fod.nii.gz",
+                                 "temporal/{subject_id}/csf_fod.nii.gz"],
+                "nthreads": 4
+        },
+        {
+            "name": "DTI Fit",
+            "script": "dtifit.py",
+            "input_files": ["temporal/{subject_id}/un_dwi.nii.gz",
+                            "temporal/{subject_id}/un_bvecs",
+                            "temporal/{subject_id}/un_bvals",
+                            "{subject_id}/T1w/Diffusion/nodif_brain_mask.nii.gz"],
+            "output_files": ["temporal/{subject_id}/dtifit_V1.nii.gz",
+                                "temporal/{subject_id}/dtifit_V2.nii.gz",
+                                "temporal/{subject_id}/dtifit_V3.nii.gz",
+                                "temporal/{subject_id}/dtifit_L1.nii.gz",
+                                "temporal/{subject_id}/dtifit_L2.nii.gz",
+                                "temporal/{subject_id}/dtifit_L3.nii.gz",
+                                     "temporal/{subject_id}/dtifit_MD.nii.gz",
+                                "temporal/{subject_id}/dtifit_FA.nii.gz",
+                                "temporal/{subject_id}/dtifit_MO.nii.gz",
+                                "temporal/{subject_id}/dtifit_S0.nii.gz"],
+                    "nthreads": 1
+        },
+        {
+            "name": "5TT Gen",
+            "script": "fivettgen.py",
+            "input_files": ["{subject_id}/T1w/T1w_acpc_dc_restore.nii.gz",
+                            "{subject_id}/T1w/T2w_acpc_dc_restore.nii.gz" ],
+            "output_files": ["temporal/{subject_id}/5tt.nii.gz"],
+            "nthreads": 1
+    	},
+    	{
+    		"name": "Resize 5TT",
+    		"script": "resize_5tt.py",
+    		"input_files": ["temporal/{subject_id}/5tt.nii.gz"],
+    		"output_files": ["temporal/{subject_id}/resized_5tt.nii.gz"],
+    		"nthreads": 1
+    	},
+    	{
+    		"name": "Tractography",
+    		"script": "tracking.py",
+    		"input_files": ["temporal/{subject_id}/wm_fod.nii.gz",
+    				"temporal/{subject_id}/resized_5tt.nii.gz",
+                                "temporal/{subject_id}/wm_fod.nii.gz",
+    				"{subject_id}/T1w/Diffusion/nodif_brain_mask.nii.gz"],
+    		"output_files": ["temporal/{subject_id}/tracks.tck"],
+    		"nthreads": 4
+    	}
+    ]
+
