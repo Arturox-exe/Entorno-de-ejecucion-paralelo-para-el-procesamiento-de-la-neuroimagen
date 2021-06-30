@@ -25,5 +25,5 @@ Los archivos "time_file.txt" y la carpeta "temporal", son ejemplos de lo que gen
 
 ### Otros datos a tener en cuenta
 No es necesario utilizar las carpetas "scripts" y "data" si no se desea, tampoco usar Python 2 para ejecutar los programas. Para cambiar de carpeta o el compilador es necesario modificar el código de "main.py"
-- Cambiar la carpeta data - Hay que cambiar la ubicación de la carpeta en la variable "directory" en la línea 98 y en la línea 550.
-- Cambiar la carpeta scripts o compilador - Hay que cambiar la viriable "directory_scripts" en la línea 335, primero indicando con que se quiere ejecutar y después la ubicación de la carpeta.
+- Cambiar la carpeta data - Hay que cambiar la ubicación de la carpeta en la variable "directory" en la línea 96 y en la línea 548.
+- Cambiar la carpeta scripts o compilador - Hay que cambiar la viriable "directory_scripts" en la línea 333, primero indicando con que se quiere ejecutar y después la ubicación de la carpeta.
