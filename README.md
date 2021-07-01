@@ -18,7 +18,7 @@ Los archivos y carpetas de este proyecto que no sean main.py son ejemplos para h
 - Hay que modificar el archivo "scheme.json" para indicar los programas que se quieren ejecutar y los input y output que generará, siguiendo el ejemplo que hay dentro del mismo archivo.
 - En la carpeta "scripts" hay que guardar los archivos que se quieren ejecutar, en un principio se ejecutar con Python 2, si no se quieren ejecutar con este compilador o se quiere ejecutar desde otra carpeta, mirar en el apartado "Otros datos a tener en cuenta".
 - En la carpeta "data" hay que guardar los inputs necesarios para ejecutar los programas en carpetas independientes, si no se quieren leer desde otra carpeta, mirar en el apartado "Otros datos a tener en cuenta".
-- En el archivo "list.txt", hay que indicar cuales de los archivos guardados en data se quieren utilizar, separados por comas.
+- En el archivo "list.txt", hay que indicar cuales de los archivos guardados en data se quieren utilizar, separados por espacios.
 - El archivo "data.csv" se tiene que borrar o cambiar de carpeta cada vez que se quiera realizar la ejecución en un nuevo ordenador o cambiar los programas que se quieren ejecutar.
 
 Los archivos "time_file.txt" y la carpeta "temporal", son ejemplos de lo que generará al terminar la ejecución, por lo que se pueden borrar si se desea.
